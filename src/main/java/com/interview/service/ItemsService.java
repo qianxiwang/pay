@@ -24,8 +24,14 @@ public class ItemsService {
         itemsDao.save(items);
     }
 
+    //根据itemId获取库存量
     public int getItemCount(String itemId) {
         return itemsDao.getOne(itemId).getCounts();
+    }
+
+    public void reduce(String itemId, int count) {
+        Items items = getItem(itemId);
+        items.setCounts(items.getCounts() - count);
     }
 
 
