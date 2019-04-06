@@ -29,9 +29,12 @@ public class ItemsService {
         return itemsDao.getOne(itemId).getCounts();
     }
 
+    //调整库存
     public void reduce(String itemId, int count) {
         Items items = getItem(itemId);
         items.setCounts(items.getCounts() - count);
+
+        itemsDao.save(items);
     }
 
 
