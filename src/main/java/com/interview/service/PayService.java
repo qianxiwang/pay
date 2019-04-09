@@ -25,7 +25,18 @@ public class PayService {
         int count = itemsService.getItemCount(itemId);
 
         if (count < buyCount) {
-            log.error("库存不足，下单失败");
+            log.error("库存不足，下单失败，购买数{}件，库存只有{}件", buyCount, count);
+            return false;
+        }
+
+        //创建订单
+        boolean flag = ordersService.save(itemId);
+
+        //扣库存
+        if (flag) {
+            itemsService.reduceCount(itemId, buyCount);
+        } else {
+            log.error("订单创建失败");
             return false;
         }
 

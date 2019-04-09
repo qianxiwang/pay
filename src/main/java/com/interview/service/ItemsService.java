@@ -30,7 +30,7 @@ public class ItemsService {
     }
 
     //调整库存
-    public void reduce(String itemId, int count) {
+    public void reduceCount(String itemId, int count) {
         Items items = getItem(itemId);
         items.setCounts(items.getCounts() - count);
 
