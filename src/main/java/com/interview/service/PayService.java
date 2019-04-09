@@ -45,6 +45,8 @@ public class PayService {
 
             int reducecount = itemsService.getItemCount(itemId);
             log.info("剩余数量：~~~~~~~~~~~~~~" + reducecount);
+
+
         } else {
             log.error("订单创建失败......");
             return false;
