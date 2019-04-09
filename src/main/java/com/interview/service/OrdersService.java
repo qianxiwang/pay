@@ -23,7 +23,8 @@ public class OrdersService {
             o.setItemId(itemId);
 
             ordersDao.save(o);
-            log.info("订单创建成功。。。。");
+
+            log.info("订单创建成功.......");
 
             return true;
         } catch (Exception e) {
