@@ -24,7 +24,7 @@ public class BuyCOntroller {
     public String buy(String itemId) {
 
         if (StringUtils.isNotBlank(itemId)) {
-            if (payService.buy(itemId)) {
+            if (payService.buy2(itemId)) {
                 return "订单创建成功";
             } else {
                 return "订单创建失败";
@@ -41,7 +41,7 @@ public class BuyCOntroller {
     public String buy2(String itemId) {
 
         if (StringUtils.isNotBlank(itemId)) {
-            if (payService.buy(itemId)) {
+            if (payService.buy2(itemId)) {
                 return "订单创建成功";
             } else {
                 return "订单创建失败";
