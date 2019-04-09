@@ -18,8 +18,8 @@ public class PayService {
 
     public boolean buy(String itemId) {
 
-        //每次购买9个
-        int buyCount = 9;
+        //每次购买个
+        int buyCount = 5;
 
         //判断库存
         int count = itemsService.getItemCount(itemId);
@@ -32,11 +32,18 @@ public class PayService {
         //创建订单
         boolean flag = ordersService.save(itemId);
 
+        //模拟高并发场景
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         //扣库存
         if (flag) {
             itemsService.reduceCount(itemId, buyCount);
         } else {
-            log.error("订单创建失败");
+            log.error("订单创建失败......");
             return false;
         }
 
